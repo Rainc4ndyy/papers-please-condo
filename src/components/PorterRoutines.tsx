@@ -354,9 +354,10 @@ export function PorterRoutines() {
                       ></div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </TabsContent>
 
         <TabsContent value="points" className="space-y-4">
