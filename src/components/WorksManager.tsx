@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -299,7 +298,68 @@ export function WorksManager() {
         <TabsContent value="pending" className="space-y-4">
           {requests.filter(r => r.status === 'pending').map((request) => (
             <Card key={request.id}>
-              {/* Same card structure as above */}
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle className="text-lg">{request.unit} - {request.resident}</CardTitle>
+                    <CardDescription>{request.description}</CardDescription>
+                  </div>
+                  <div className="text-right">
+                    {getStatusBadge(request.status)}
+                    <p className="text-sm text-gray-500 mt-1">
+                      Atualizado: {new Date(request.updatedAt).toLocaleDateString('pt-BR')}
+                    </p>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-medium mb-2">Documentação:</h4>
+                    <div className="space-y-2">
+                      {request.documents.map((doc, index) => (
+                        <div key={index} className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                          <div className="flex items-center space-x-2">
+                            <FileText className="h-4 w-4" />
+                            <span className="text-sm">{doc.name}</span>
+                            {doc.required && <Badge variant="outline" className="text-xs">Obrigatório</Badge>}
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            {doc.uploaded ? (
+                              <CheckCircle className="h-4 w-4 text-green-500" />
+                            ) : (
+                              <Button size="sm" variant="outline">
+                                <Upload className="h-3 w-3 mr-1" />
+                                Upload
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {request.status === 'in_analysis' && (
+                    <div className="flex space-x-2 pt-4 border-t">
+                      <Button
+                        onClick={() => handleApprove(request.id)}
+                        disabled={!canApprove(request)}
+                        className="bg-green-500 hover:bg-green-600"
+                      >
+                        <CheckCircle className="h-4 w-4 mr-1" />
+                        Aprovar Obra
+                      </Button>
+                      <Button
+                        onClick={() => handleReject(request.id)}
+                        variant="destructive"
+                      >
+                        <XCircle className="h-4 w-4 mr-1" />
+                        Reprovar
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
             </Card>
           ))}
         </TabsContent>
@@ -307,7 +367,68 @@ export function WorksManager() {
         <TabsContent value="in_analysis" className="space-y-4">
           {requests.filter(r => r.status === 'in_analysis').map((request) => (
             <Card key={request.id}>
-              {/* Same card structure as above */}
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle className="text-lg">{request.unit} - {request.resident}</CardTitle>
+                    <CardDescription>{request.description}</CardDescription>
+                  </div>
+                  <div className="text-right">
+                    {getStatusBadge(request.status)}
+                    <p className="text-sm text-gray-500 mt-1">
+                      Atualizado: {new Date(request.updatedAt).toLocaleDateString('pt-BR')}
+                    </p>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-medium mb-2">Documentação:</h4>
+                    <div className="space-y-2">
+                      {request.documents.map((doc, index) => (
+                        <div key={index} className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                          <div className="flex items-center space-x-2">
+                            <FileText className="h-4 w-4" />
+                            <span className="text-sm">{doc.name}</span>
+                            {doc.required && <Badge variant="outline" className="text-xs">Obrigatório</Badge>}
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            {doc.uploaded ? (
+                              <CheckCircle className="h-4 w-4 text-green-500" />
+                            ) : (
+                              <Button size="sm" variant="outline">
+                                <Upload className="h-3 w-3 mr-1" />
+                                Upload
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {request.status === 'in_analysis' && (
+                    <div className="flex space-x-2 pt-4 border-t">
+                      <Button
+                        onClick={() => handleApprove(request.id)}
+                        disabled={!canApprove(request)}
+                        className="bg-green-500 hover:bg-green-600"
+                      >
+                        <CheckCircle className="h-4 w-4 mr-1" />
+                        Aprovar Obra
+                      </Button>
+                      <Button
+                        onClick={() => handleReject(request.id)}
+                        variant="destructive"
+                      >
+                        <XCircle className="h-4 w-4 mr-1" />
+                        Reprovar
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
             </Card>
           ))}
         </TabsContent>
@@ -315,7 +436,68 @@ export function WorksManager() {
         <TabsContent value="approved" className="space-y-4">
           {requests.filter(r => r.status === 'approved').map((request) => (
             <Card key={request.id}>
-              {/* Same card structure as above */}
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle className="text-lg">{request.unit} - {request.resident}</CardTitle>
+                    <CardDescription>{request.description}</CardDescription>
+                  </div>
+                  <div className="text-right">
+                    {getStatusBadge(request.status)}
+                    <p className="text-sm text-gray-500 mt-1">
+                      Atualizado: {new Date(request.updatedAt).toLocaleDateString('pt-BR')}
+                    </p>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-medium mb-2">Documentação:</h4>
+                    <div className="space-y-2">
+                      {request.documents.map((doc, index) => (
+                        <div key={index} className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                          <div className="flex items-center space-x-2">
+                            <FileText className="h-4 w-4" />
+                            <span className="text-sm">{doc.name}</span>
+                            {doc.required && <Badge variant="outline" className="text-xs">Obrigatório</Badge>}
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            {doc.uploaded ? (
+                              <CheckCircle className="h-4 w-4 text-green-500" />
+                            ) : (
+                              <Button size="sm" variant="outline">
+                                <Upload className="h-3 w-3 mr-1" />
+                                Upload
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {request.status === 'in_analysis' && (
+                    <div className="flex space-x-2 pt-4 border-t">
+                      <Button
+                        onClick={() => handleApprove(request.id)}
+                        disabled={!canApprove(request)}
+                        className="bg-green-500 hover:bg-green-600"
+                      >
+                        <CheckCircle className="h-4 w-4 mr-1" />
+                        Aprovar Obra
+                      </Button>
+                      <Button
+                        onClick={() => handleReject(request.id)}
+                        variant="destructive"
+                      >
+                        <XCircle className="h-4 w-4 mr-1" />
+                        Reprovar
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
             </Card>
           ))}
         </TabsContent>
