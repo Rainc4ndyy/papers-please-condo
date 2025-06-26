@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -66,10 +65,10 @@ export function WorksManager() {
 
   const getStatusBadge = (status: string) => {
     const variants = {
-      pending: { variant: "secondary" as const, label: "Pendente", icon: Clock },
-      in_analysis: { variant: "default" as const, label: "Em Análise", icon: AlertTriangle },
+      pending: { variant: "secondary" as const, label: "Pendente", icon: Clock, className: '' },
+      in_analysis: { variant: "default" as const, label: "Em Análise", icon: AlertTriangle, className: '' },
       approved: { variant: "default" as const, label: "Aprovado", icon: CheckCircle, className: "bg-green-500" },
-      rejected: { variant: "destructive" as const, label: "Reprovado", icon: XCircle }
+      rejected: { variant: "destructive" as const, label: "Reprovado", icon: XCircle, className: '' }
     };
     const config = variants[status as keyof typeof variants];
     const IconComponent = config.icon;

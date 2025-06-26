@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -143,8 +142,8 @@ export function MaintenanceManager() {
 
   const getStatusBadge = (status: string) => {
     const configs = {
-      open: { color: 'secondary', label: 'Aberta', icon: Clock },
-      in_progress: { color: 'default', label: 'Em Execução', icon: Wrench },
+      open: { color: 'secondary', label: 'Aberta', icon: Clock, className: '' },
+      in_progress: { color: 'default', label: 'Em Execução', icon: Wrench, className: '' },
       completed: { color: 'default', label: 'Concluída', icon: CheckCircle, className: 'bg-green-500 text-white' }
     };
     const config = configs[status as keyof typeof configs];
