@@ -36,11 +36,11 @@ export function AppSidebar() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <Sidebar className="bg-blue-600 text-white border-r-0">
-      <SidebarHeader className="p-4 border-b border-blue-500">
+    <Sidebar className="bg-gray-800 text-white border-r-0">
+      <SidebarHeader className="p-4 border-b border-gray-700">
         <div className="flex items-center space-x-2">
-          <Building2 className="h-8 w-8 text-cyan-300" />
-          <h1 className="text-xl font-bold">Superlógica</h1>
+          <Building2 className="h-8 w-8 text-cyan-400" />
+          <h1 className="text-xl font-bold text-white">Superlógica</h1>
         </div>
       </SidebarHeader>
       
@@ -50,7 +50,7 @@ export function AppSidebar() {
             <SidebarMenuItem>
               <SidebarMenuButton 
                 asChild 
-                className={`px-4 py-3 hover:bg-blue-500 ${isActive('/') ? 'bg-cyan-400 text-blue-900' : 'text-blue-100'}`}
+                className={`px-4 py-3 hover:bg-gray-700 ${isActive('/') ? 'bg-cyan-500 text-white' : 'text-gray-300'}`}
               >
                 <Link to="/">
                   <Home className="h-5 w-5" />
@@ -63,7 +63,7 @@ export function AppSidebar() {
 
         <SidebarGroup className="px-0">
           <Collapsible open={condominiumOpen} onOpenChange={setCondominiumOpen}>
-            <CollapsibleTrigger className="w-full px-4 py-3 flex items-center justify-between hover:bg-blue-500 text-blue-100">
+            <CollapsibleTrigger className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-700 text-gray-300">
               <div className="flex items-center space-x-2">
                 <Building2 className="h-5 w-5" />
                 <span>Condomínio</span>
@@ -73,7 +73,10 @@ export function AppSidebar() {
             <CollapsibleContent>
               <SidebarMenu>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className="px-8 py-2 hover:bg-blue-500 text-blue-100">
+                  <SidebarMenuButton 
+                    asChild 
+                    className={`px-8 py-2 hover:bg-gray-700 ${isActive('/unidades') ? 'bg-cyan-500 text-white' : 'text-gray-400'}`}
+                  >
                     <Link to="/unidades">
                       <Users className="h-4 w-4" />
                       <span>Unidades</span>
@@ -81,72 +84,75 @@ export function AppSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className="px-8 py-2 hover:bg-blue-500 text-blue-100">
+                  <SidebarMenuButton 
+                    asChild 
+                    className={`px-8 py-2 hover:bg-gray-700 ${isActive('/contas-bancarias') ? 'bg-cyan-500 text-white' : 'text-gray-400'}`}
+                  >
                     <Link to="/contas-bancarias">
                       <CreditCard className="h-4 w-4" />
                       <span>Contas bancárias</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-                
+              </SidebarMenu>
+            </CollapsibleContent>
+          </Collapsible>
+        </SidebarGroup>
+
+        <SidebarGroup className="px-0">
+          <Collapsible open={papersOpen} onOpenChange={setPapersOpen}>
+            <CollapsibleTrigger className={`w-full px-4 py-3 flex items-center justify-between hover:bg-gray-700 ${location.pathname.includes('/papers-please') ? 'bg-cyan-500 text-white' : 'text-gray-300'}`}>
+              <div className="flex items-center space-x-2">
+                <ClipboardList className="h-5 w-5" />
+                <span>Papers, Please</span>
+              </div>
+              <ChevronDown className={`h-4 w-4 transition-transform ${papersOpen ? 'rotate-180' : ''}`} />
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <SidebarMenu>
                 <SidebarMenuItem>
-                  <Collapsible open={papersOpen} onOpenChange={setPapersOpen}>
-                    <CollapsibleTrigger className={`w-full px-8 py-2 flex items-center justify-between hover:bg-blue-500 ${location.pathname.includes('/papers-please') ? 'bg-cyan-400 text-blue-900' : 'text-blue-100'}`}>
-                      <div className="flex items-center space-x-2">
-                        <ClipboardList className="h-4 w-4" />
-                        <span>Papers, Please</span>
-                      </div>
-                      <ChevronDown className={`h-3 w-3 transition-transform ${papersOpen ? 'rotate-180' : ''}`} />
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <SidebarMenu>
-                        <SidebarMenuItem>
-                          <SidebarMenuButton 
-                            asChild 
-                            className={`px-12 py-2 hover:bg-blue-500 ${isActive('/papers-please/obras') ? 'bg-cyan-300 text-blue-900' : 'text-blue-200'}`}
-                          >
-                            <Link to="/papers-please/obras">
-                              <HardHat className="h-3 w-3" />
-                              <span>Obras e Reformas</span>
-                            </Link>
-                          </SidebarMenuButton>
-                        </SidebarMenuItem>
-                        <SidebarMenuItem>
-                          <SidebarMenuButton 
-                            asChild 
-                            className={`px-12 py-2 hover:bg-blue-500 ${isActive('/papers-please/inspecoes') ? 'bg-cyan-300 text-blue-900' : 'text-blue-200'}`}
-                          >
-                            <Link to="/papers-please/inspecoes">
-                              <Shield className="h-3 w-3" />
-                              <span>Inspeções</span>
-                            </Link>
-                          </SidebarMenuButton>
-                        </SidebarMenuItem>
-                        <SidebarMenuItem>
-                          <SidebarMenuButton 
-                            asChild 
-                            className={`px-12 py-2 hover:bg-blue-500 ${isActive('/papers-please/manutencao') ? 'bg-cyan-300 text-blue-900' : 'text-blue-200'}`}
-                          >
-                            <Link to="/papers-please/manutencao">
-                              <Wrench className="h-3 w-3" />
-                              <span>Manutenção</span>
-                            </Link>
-                          </SidebarMenuButton>
-                        </SidebarMenuItem>
-                        <SidebarMenuItem>
-                          <SidebarMenuButton 
-                            asChild 
-                            className={`px-12 py-2 hover:bg-blue-500 ${isActive('/papers-please/portaria') ? 'bg-cyan-300 text-blue-900' : 'text-blue-200'}`}
-                          >
-                            <Link to="/papers-please/portaria">
-                              <Camera className="h-3 w-3" />
-                              <span>Rotinas Portaria</span>
-                            </Link>
-                          </SidebarMenuButton>
-                        </SidebarMenuItem>
-                      </SidebarMenu>
-                    </CollapsibleContent>
-                  </Collapsible>
+                  <SidebarMenuButton 
+                    asChild 
+                    className={`px-8 py-2 hover:bg-gray-700 ${isActive('/papers-please/obras') ? 'bg-cyan-400 text-gray-900' : 'text-gray-400'}`}
+                  >
+                    <Link to="/papers-please/obras">
+                      <HardHat className="h-4 w-4" />
+                      <span>Obras e Reformas</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton 
+                    asChild 
+                    className={`px-8 py-2 hover:bg-gray-700 ${isActive('/papers-please/inspecoes') ? 'bg-cyan-400 text-gray-900' : 'text-gray-400'}`}
+                  >
+                    <Link to="/papers-please/inspecoes">
+                      <Shield className="h-4 w-4" />
+                      <span>Inspeções</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton 
+                    asChild 
+                    className={`px-8 py-2 hover:bg-gray-700 ${isActive('/papers-please/manutencao') ? 'bg-cyan-400 text-gray-900' : 'text-gray-400'}`}
+                  >
+                    <Link to="/papers-please/manutencao">
+                      <Wrench className="h-4 w-4" />
+                      <span>Manutenção</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton 
+                    asChild 
+                    className={`px-8 py-2 hover:bg-gray-700 ${isActive('/papers-please/portaria') ? 'bg-cyan-400 text-gray-900' : 'text-gray-400'}`}
+                  >
+                    <Link to="/papers-please/portaria">
+                      <Camera className="h-4 w-4" />
+                      <span>Rotinas Portaria</span>
+                    </Link>
+                  </SidebarMenuButton>
                 </SidebarMenuItem>
               </SidebarMenu>
             </CollapsibleContent>
@@ -156,7 +162,10 @@ export function AppSidebar() {
         <SidebarGroup className="px-0">
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild className="px-4 py-3 hover:bg-blue-500 text-blue-100">
+              <SidebarMenuButton 
+                asChild 
+                className={`px-4 py-3 hover:bg-gray-700 ${isActive('/configuracoes') ? 'bg-cyan-500 text-white' : 'text-gray-300'}`}
+              >
                 <Link to="/configuracoes">
                   <Settings className="h-5 w-5" />
                   <span>Configurações</span>
