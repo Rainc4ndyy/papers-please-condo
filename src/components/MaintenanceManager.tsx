@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -150,7 +151,7 @@ export function MaintenanceManager() {
     const IconComponent = config.icon;
     
     return (
-      <Badge variant={config.color as any} className={config.className}>
+      <Badge variant={config.color as any} className={config.className || ''}>
         <IconComponent className="h-3 w-3 mr-1" />
         {config.label}
       </Badge>
