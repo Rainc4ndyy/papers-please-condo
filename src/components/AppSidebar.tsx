@@ -43,8 +43,8 @@ export function AppSidebar() {
   ];
 
   return (
-    <Sidebar className="bg-gray-800 text-white border-r-0 w-16">
-      <SidebarHeader className="p-2 border-b border-gray-700">
+    <Sidebar className="bg-gray-800 border-r-0 w-16">
+      <SidebarHeader className="p-2 border-b border-gray-600">
         <div className="flex items-center justify-center">
           <div className="w-8 h-8 bg-cyan-400 rounded flex items-center justify-center">
             <span className="text-white font-bold text-sm">S</span>
@@ -62,13 +62,13 @@ export function AppSidebar() {
                   <SidebarMenuItem key={index}>
                     <SidebarMenuButton 
                       asChild 
-                      className={`flex flex-col items-center justify-center py-3 px-2 hover:bg-gray-700 min-h-[60px] w-full ${
-                        isActive(item.path) ? 'bg-cyan-400 text-white' : 'text-gray-300'
+                      className={`flex flex-col items-center justify-center py-3 px-2 hover:bg-gray-700 min-h-[60px] w-full border-b border-gray-700 ${
+                        isActive(item.path) ? 'bg-cyan-400 text-white' : 'text-white hover:text-white'
                       }`}
                     >
                       <Link to={item.path} className="flex flex-col items-center">
                         <IconComponent className="h-5 w-5 mb-1" />
-                        <span className="text-xs text-center leading-tight">{item.label}</span>
+                        <span className="text-xs text-center leading-tight font-medium">{item.label}</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
