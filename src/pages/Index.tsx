@@ -19,7 +19,7 @@ const Index = () => {
         <main className="flex-1 p-6">
           <Routes>
             <Route path="/" element={<SuperlogicaDashboard />} />
-            <Route path="/receitas" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Receitas</h1><p className="text-gray-600">Módulo em desenvolvimento</p></div>} />
+            <Route path="/faturas" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Faturas</h1><p className="text-gray-600">Módulo em desenvolvimento</p></div>} />
             <Route path="/despesas" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Despesas</h1><p className="text-gray-600">Módulo em desenvolvimento</p></div>} />
             <Route path="/financeiro" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Financeiro</h1><p className="text-gray-600">Módulo em desenvolvimento</p></div>} />
             <Route path="/area-condomino" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Área do Condômino</h1><p className="text-gray-600">Módulo em desenvolvimento</p></div>} />
