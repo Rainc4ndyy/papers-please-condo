@@ -69,8 +69,8 @@ export function AppSidebar() {
                       }`}
                     >
                       <Link to={item.path} className="flex flex-col items-center text-white">
-                        <IconComponent className="h-6 w-6 mb-2 text-white" />
-                        <span className="text-xs text-center leading-tight font-medium text-white">{item.label}</span>
+                        <IconComponent className="h-6 w-6 mb-1 text-white" />
+                        <span className="text-[10px] text-center leading-tight font-semibold text-white">{item.label}</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
