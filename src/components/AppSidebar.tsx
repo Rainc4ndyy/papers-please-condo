@@ -43,7 +43,7 @@ export function AppSidebar() {
   ];
 
   return (
-    <Sidebar className="bg-gray-700 text-white border-r-0 w-20">
+    <Sidebar className="bg-gray-800 text-white border-r-0 w-20">
       <SidebarHeader className="p-4 border-b border-gray-600">
         <div className="flex items-center justify-center">
           <div className="w-10 h-10 bg-cyan-400 rounded flex items-center justify-center">
@@ -54,7 +54,7 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
       
-      <SidebarContent className="p-0">
+      <SidebarContent className="p-0 bg-gray-800">
         <SidebarGroup className="px-0">
           <SidebarGroupContent>
             <SidebarMenu>
@@ -64,13 +64,13 @@ export function AppSidebar() {
                   <SidebarMenuItem key={index}>
                     <SidebarMenuButton 
                       asChild 
-                      className={`flex flex-col items-center justify-center py-4 px-2 hover:bg-gray-600 min-h-[70px] w-full border-b border-gray-600 ${
-                        isActive(item.path) ? 'bg-cyan-400 text-white' : 'text-white'
+                      className={`flex flex-col items-center justify-center py-4 px-2 hover:bg-gray-700 min-h-[70px] w-full border-b border-gray-600 ${
+                        isActive(item.path) ? 'bg-cyan-500 text-white' : 'text-white bg-gray-800'
                       }`}
                     >
-                      <Link to={item.path} className="flex flex-col items-center">
-                        <IconComponent className="h-6 w-6 mb-2" />
-                        <span className="text-xs text-center leading-tight font-medium">{item.label}</span>
+                      <Link to={item.path} className="flex flex-col items-center text-white">
+                        <IconComponent className="h-6 w-6 mb-2 text-white" />
+                        <span className="text-xs text-center leading-tight font-medium text-white">{item.label}</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
