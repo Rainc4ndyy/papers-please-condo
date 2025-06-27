@@ -39,6 +39,7 @@ export function AppSidebar() {
     { icon: UserCheck, label: "Área do condômino", path: "/area-condomino" },
     { icon: Building2, label: "Condomínio", path: "/condominio" },
     { icon: Grid3X3, label: "Apps", path: "/apps" },
+    { icon: ClipboardList, label: "Papers, Please", path: "/papers-please" },
     { icon: Sparkles, label: "Novidades", path: "/novidades" }
   ];
 
