@@ -65,13 +65,13 @@ export function AppSidebar() {
                   <SidebarMenuItem key={index}>
                     <SidebarMenuButton 
                       asChild 
-                      className={`flex flex-col items-center justify-center py-3 px-1 hover:bg-gray-700 min-h-[75px] w-full border-b border-gray-600 ${
+                      className={`flex flex-col items-center justify-center py-2 px-1 hover:bg-gray-700 min-h-[80px] w-full border-b border-gray-600 ${
                         isActive(item.path) ? 'bg-cyan-500 text-white' : 'text-white bg-gray-800'
                       }`}
                     >
                       <Link to={item.path} className="flex flex-col items-center text-white gap-1">
                         <IconComponent className="h-5 w-5 text-white" />
-                        <span className="text-[10px] text-center leading-[11px] font-bold text-white px-1 break-words hyphens-auto">{item.label}</span>
+                        <span className="text-[9px] text-center leading-[10px] font-bold text-white px-1 break-words hyphens-auto max-w-[60px]">{item.label}</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
